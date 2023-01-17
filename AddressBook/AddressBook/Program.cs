@@ -31,7 +31,7 @@ namespace AddressBook
             return "Details are: " + "\nFirstName - " + firstName +
                 "\nLastName " + lastName +
                 "\nAddress: " + address +
-                "\nCity: " + city + " state: " + state + "" +
+                "\nCity: " + city + ", state: " + state + "" +
                 "\nZip " + zipCode + " \nPhone: " + phoneNumber + " \nEmail: " + email;
         }
 
@@ -69,11 +69,10 @@ namespace AddressBook
                 try
                 {
                     contacts.Add(firstName.ToLower(), addresses);
-
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Key exists");
+                    Console.WriteLine("Key already exists");
                 }
             }
             public void GetContact()
@@ -86,7 +85,6 @@ namespace AddressBook
 
             public void EditContacts(string key)
             {
-                Console.WriteLine("Key is " + key);
                 if (contacts.ContainsKey(key))
                 {
                     Console.WriteLine("Enter your First Name: ");
@@ -105,13 +103,26 @@ namespace AddressBook
                     string phoneNumber = Console.ReadLine();
                     Console.WriteLine("Enter your Email: ");
                     string email = Console.ReadLine();
-                    AddressBook addresses = new AddressBook(firstName, lastName, address, city, state, zipCode, phoneNumber, email);
+                    AddressBook addresses = new AddressBook(firstName.ToLower(), lastName, address, city, state, zipCode, phoneNumber, email);
                     contactList.Add(addresses);
                     contacts[key] = addresses;
                 }
                 else
                 {
-                    Console.WriteLine("Key doesnt exist");
+                    Console.WriteLine("First Name doesnt exist");
+                }
+            }
+            private void DeleteContacts()
+            {
+                Console.WriteLine("Enter first name to Delete");
+                string input = Console.ReadLine();
+                if (contacts.ContainsKey(input.ToLower()))
+                {
+                    contacts.Remove(input.ToLower());
+                }
+                else
+                {
+                    Console.WriteLine("first name doesnt exist");
                 }
             }
 
@@ -125,6 +136,7 @@ namespace AddressBook
                     Console.WriteLine("Choose 1: To Add a Contact");
                     Console.WriteLine("Choose 2: To get Contacts");
                     Console.WriteLine("Choose 3: To Edit a contact");
+                    Console.WriteLine("Choose 4: To Delete a Contact");
                     Console.WriteLine("Choose 0: To Exit");
                     try
                     {
@@ -138,15 +150,18 @@ namespace AddressBook
                                 program.GetContact();
                                 continue;
                             case 3:
-                                Console.WriteLine("Enter key");
+                                Console.WriteLine("Enter first name");
                                 string key = Console.ReadLine();
                                 program.EditContacts(key);
+                                break;
+                            case 4:
+                                program.DeleteContacts();
                                 break;
                             case 0:
                                 Console.WriteLine("Good Day");
                                 break;
                             default:
-                                Console.WriteLine("Choose valid");
+                                Console.WriteLine("Choose valid Option");
                                 break;
                         }
                     }

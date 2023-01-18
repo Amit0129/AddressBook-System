@@ -30,6 +30,7 @@ namespace AddressBookSystem
                                 Console.WriteLine("Choose 4: To Delete a Contact");
                                 Console.WriteLine("Choose 5: To Search Contact by city or state");
                                 Console.WriteLine("Choose 6: To Get Sorted Contacts by city, state or zip");
+                                Console.WriteLine("Choose 7: Search number of Contact by city or state");
                                 Console.WriteLine("Choose 0: To Exit");
                                 try
                                 {
@@ -55,6 +56,11 @@ namespace AddressBookSystem
                                         case 6:
                                             workContacts.SortedContactsByCityStateZip();
                                             break;
+                                        case 7:
+                                            Console.WriteLine("Enter city or state");
+                                            string city = Console.ReadLine();
+                                            workContacts.PersonCount(city);
+                                            break;
                                         default:
                                             Console.WriteLine("Choose valid Option");
                                             break;
@@ -75,6 +81,7 @@ namespace AddressBookSystem
                                 Console.WriteLine("Choose 4: To Delete a Contact");
                                 Console.WriteLine("Choose 5: To Search Contact by city or state");
                                 Console.WriteLine("Choose 6: To Get Sorted Contacts by city, state or zip");
+                                Console.WriteLine("Choose 7: Search number of Contact by city or state");
                                 Console.WriteLine("Choose 0: To Exit");
                                 try
                                 {
@@ -98,6 +105,11 @@ namespace AddressBookSystem
                                             break;
                                         case 6:
                                             familyContacts.SortedContactsByCityStateZip();
+                                            break;
+                                        case 7:
+                                            Console.WriteLine("Enter city or state");
+                                            string city = Console.ReadLine();
+                                            familyContacts.PersonCount(city);
                                             break;
                                         default:
                                             Console.WriteLine("Choose valid Option");

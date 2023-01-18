@@ -135,5 +135,10 @@ namespace AddressBookSystem
             }
 
         }
+        public void PersonCount(string cityOrState)
+        {
+            var list = contactList.FindAll(x => x.city == cityOrState || x.state == cityOrState);
+            Console.WriteLine($"Number of person that live in {cityOrState} are : " + list.Count);
+        }
     }
 }

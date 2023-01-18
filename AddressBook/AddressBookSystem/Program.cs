@@ -6,13 +6,12 @@ namespace AddressBookSystem
     {
         static void Main(string[] args)
         {
-            int input = 0;
+            int input;
             do
             {
                 Console.WriteLine("Choose 1: Work contacts");
                 Console.WriteLine("Choose 2: Family contacts");
                 Console.WriteLine("Choose 0: Exit");
-
                 input = int.Parse(Console.ReadLine());
                 switch (input)
                 {
@@ -25,6 +24,8 @@ namespace AddressBookSystem
                             Console.WriteLine("Choose 2: To get Contacts");
                             Console.WriteLine("Choose 3: To Edit a contact");
                             Console.WriteLine("Choose 4: To Delete a Contact");
+                            Console.WriteLine("Choose 5: Search Contact by city");
+                            Console.WriteLine("Choose 6: Search Contact by state");
                             Console.WriteLine("Choose 0: To Exit");
                             try
                             {
@@ -33,7 +34,6 @@ namespace AddressBookSystem
                                 {
                                     case 1:
                                         work.AddContact();
-
                                         continue;
                                     case 2:
                                         work.GetContact();
@@ -45,6 +45,16 @@ namespace AddressBookSystem
                                         break;
                                     case 4:
                                         work.DeleteContacts();
+                                        break;
+                                    case 5:
+                                        Console.WriteLine("Enter city");
+                                        string city = Console.ReadLine();
+                                        work.SearchByCity(city);
+                                        break;
+                                    case 6:
+                                        Console.WriteLine("Enter state");
+                                        string state = Console.ReadLine();
+                                        work.SearchByState(state);
                                         break;
                                     case 0:
                                         Console.WriteLine("Good Day");
@@ -69,6 +79,8 @@ namespace AddressBookSystem
                             Console.WriteLine("Choose 2: To get Contacts");
                             Console.WriteLine("Choose 3: To Edit a contact");
                             Console.WriteLine("Choose 4: To Delete a Contact");
+                            Console.WriteLine("Choose 5: Search Contact by city");
+                            Console.WriteLine("Choose 6: Search Contact by state");
                             Console.WriteLine("Choose 0: To Exit");
                             try
                             {
@@ -88,6 +100,16 @@ namespace AddressBookSystem
                                         break;
                                     case 4:
                                         familyContacts.DeleteContacts();
+                                        break;
+                                    case 5:
+                                        Console.WriteLine("Enter city");
+                                        string city = Console.ReadLine();
+                                        familyContacts.SearchByCity(city);
+                                        break;
+                                    case 6:
+                                        Console.WriteLine("Enter state");
+                                        string state = Console.ReadLine();
+                                        familyContacts.SearchByState(state);
                                         break;
                                     case 0:
                                         Console.WriteLine("Good Day");

@@ -9,15 +9,14 @@ namespace AddressBookSystem
 {
     internal class FamilyContacts
     {
-        private ArrayList contactList;
+        private List<AddressBook> contactList;
         private Dictionary<string, AddressBook> contacts;
 
         public FamilyContacts()
         {
-            contactList = new ArrayList();
+            contactList = new List<AddressBook>();
             contacts = new Dictionary<string, AddressBook>();
         }
-
         public void AddContact()
         {
             Console.WriteLine("Enter your First Name: ");
@@ -89,13 +88,37 @@ namespace AddressBookSystem
             Console.WriteLine("Enter first name to Delete");
             string input = Console.ReadLine();
             if (contacts.ContainsKey(input.ToLower()))
-            {
                 contacts.Remove(input.ToLower());
-            }
             else
-            {
                 Console.WriteLine("first name doesnt exist");
+        }
+
+        public void SearchByCity(string city)
+        {
+            var list = contactList.FindAll(x => x.city == city);
+            Console.WriteLine($"Details of people who live in {city} - ");
+            foreach (var contact in list)
+            {
+                Console.WriteLine(contact);
+            }
+            //foreach (AddressBook item in contacts.Values)
+            //{
+            //    Console.WriteLine($"Person that lives in {city} are :");
+            //    if (item.city == city)
+            //    {
+            //        Console.WriteLine(item.firstName);
+            //    }
+            //}
+        }
+        public void SearchByState(string state)
+        {
+            var list = contactList.FindAll(x => x.state == state);
+            Console.WriteLine($"Details of people who live in {state} - ");
+            foreach (var contact in list)
+            {
+                Console.WriteLine(contact);
             }
         }
+
     }
 }

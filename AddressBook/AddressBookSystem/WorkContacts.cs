@@ -9,11 +9,11 @@ namespace AddressBookSystem
 {
     public class WorkContacts
     {
-        private ArrayList contactList;
+        private List<AddressBook> contactList;
         private Dictionary<string, AddressBook> contacts;
         public WorkContacts()
         {
-            contactList = new ArrayList();
+            contactList = new List<AddressBook>();
             contacts = new Dictionary<string, AddressBook>();
         }
 
@@ -96,5 +96,29 @@ namespace AddressBookSystem
                 Console.WriteLine("first name doesnt exist");
             }
         }
+
+        public void SearchByCity(string city)
+        {
+            var list = contactList.FindAll(x => x.city == city);
+            Console.WriteLine($"Details of people who live in {city} - ");
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+            
+        }
+        public void SearchByState(string state)
+        {
+            var list = contactList.FindAll(x => x.state == state);
+            Console.WriteLine($"Details of people who live in {state} - ");
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+
     }
 }

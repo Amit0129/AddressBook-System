@@ -6,125 +6,115 @@ namespace AddressBookSystem
     {
         static void Main(string[] args)
         {
-            int input;
+            var workContacts = new WorkContacts();
+            var familyContacts = new FamilyContacts();
+
+            int option = 0, input = 0;
             do
             {
-                Console.WriteLine("Choose 1: Work contacts");
-                Console.WriteLine("Choose 2: Family contacts");
-                Console.WriteLine("Choose 0: Exit");
-                input = int.Parse(Console.ReadLine());
-                switch (input)
+                try
                 {
-                    case 1:
-                        var work = new WorkContacts();
-                        int option = 0;
-                        do
-                        {
-                            Console.WriteLine("Choose 1: To Add a Contact");
-                            Console.WriteLine("Choose 2: To get Contacts");
-                            Console.WriteLine("Choose 3: To Edit a contact");
-                            Console.WriteLine("Choose 4: To Delete a Contact");
-                            Console.WriteLine("Choose 5: Search Contact by city");
-                            Console.WriteLine("Choose 6: Search Contact by state");
-                            Console.WriteLine("Choose 0: To Exit");
-                            try
+                    Console.WriteLine("Choose 1: Work contacts");
+                    Console.WriteLine("Choose 2: Family contacts");
+                    Console.WriteLine("Choose 0: Exit");
+                    input = int.Parse(Console.ReadLine());
+
+                    switch (input)
+                    {
+                        case 1:
+                            do
                             {
-                                option = int.Parse(Console.ReadLine());
-                                switch (option)
+                                Console.WriteLine("Choose 1: To Add a Contact");
+                                Console.WriteLine("Choose 2: To get Contacts");
+                                Console.WriteLine("Choose 3: To Edit a contact");
+                                Console.WriteLine("Choose 4: To Delete a Contact");
+                                Console.WriteLine("Choose 5: To Search Contact by city or state");
+                                Console.WriteLine("Choose 6: To Get Sorted Contacts by city, state or zip");
+                                Console.WriteLine("Choose 0: To Exit");
+                                try
                                 {
-                                    case 1:
-                                        work.AddContact();
-                                        continue;
-                                    case 2:
-                                        work.GetContact();
-                                        continue;
-                                    case 3:
-                                        Console.WriteLine("Enter first name");
-                                        string key = Console.ReadLine();
-                                        work.EditContacts(key);
-                                        break;
-                                    case 4:
-                                        work.DeleteContacts();
-                                        break;
-                                    case 5:
-                                        Console.WriteLine("Enter city");
-                                        string city = Console.ReadLine();
-                                        work.SearchByCity(city);
-                                        break;
-                                    case 6:
-                                        Console.WriteLine("Enter state");
-                                        string state = Console.ReadLine();
-                                        work.SearchByState(state);
-                                        break;
-                                    case 0:
-                                        Console.WriteLine("Good Day");
-                                        break;
-                                    default:
-                                        Console.WriteLine("Choose valid Option");
-                                        break;
+                                    option = int.Parse(Console.ReadLine());
+                                    switch (option)
+                                    {
+                                        case 1:
+                                            workContacts.AddContact();
+                                            continue;
+                                        case 2:
+                                            workContacts.GetContact();
+                                            continue;
+                                        case 3:
+
+                                            workContacts.EditContacts();
+                                            break;
+                                        case 4:
+                                            workContacts.DeleteContacts();
+                                            break;
+                                        case 5:
+                                            workContacts.SearchContact();
+                                            break;
+                                        case 6:
+                                            workContacts.SortedContactsByCityStateZip();
+                                            break;
+                                        default:
+                                            Console.WriteLine("Choose valid Option");
+                                            break;
+                                    }
                                 }
-                            }
-                            catch (Exception)
-                            {
-                                Console.WriteLine("Please choose an option");
-                            }
-                        } while (option != 0);
-                        break;
-                    case 2:
-                        var familyContacts = new FamilyContacts();
-                        int options = 0;
-                        do
-                        {
-                            Console.WriteLine("Choose 1: To Add a Contact");
-                            Console.WriteLine("Choose 2: To get Contacts");
-                            Console.WriteLine("Choose 3: To Edit a contact");
-                            Console.WriteLine("Choose 4: To Delete a Contact");
-                            Console.WriteLine("Choose 5: Search Contact by city");
-                            Console.WriteLine("Choose 6: Search Contact by state");
-                            Console.WriteLine("Choose 0: To Exit");
-                            try
-                            {
-                                options = int.Parse(Console.ReadLine());
-                                switch (options)
+                                catch (Exception)
                                 {
-                                    case 1:
-                                        familyContacts.AddContact();
-                                        continue;
-                                    case 2:
-                                        familyContacts.GetContact();
-                                        continue;
-                                    case 3:
-                                        Console.WriteLine("Enter first name");
-                                        string key = Console.ReadLine();
-                                        familyContacts.EditContacts(key);
-                                        break;
-                                    case 4:
-                                        familyContacts.DeleteContacts();
-                                        break;
-                                    case 5:
-                                        Console.WriteLine("Enter city");
-                                        string city = Console.ReadLine();
-                                        familyContacts.SearchByCity(city);
-                                        break;
-                                    case 6:
-                                        Console.WriteLine("Enter state");
-                                        string state = Console.ReadLine();
-                                        familyContacts.SearchByState(state);
-                                        break;
-                                    case 0:
-                                        Console.WriteLine("Good Day");
-                                        break;
-                                    default:
-                                        Console.WriteLine("Choose valid Option");
-                                        break;
+                                    Console.WriteLine("Please choose an option");
                                 }
-                            }
-                            catch (Exception)
+                            } while (option != 0);
+                            break;
+                        case 2:
+                            do
                             {
-                                Console.WriteLine("Please choose an option");
-                            }
-                        } while (options != 0);
-                        break;
+                                Console.WriteLine("Choose 1: To Add a Contact");
+                                Console.WriteLine("Choose 2: To get Contacts");
+                                Console.WriteLine("Choose 3: To Edit a contact");
+                                Console.WriteLine("Choose 4: To Delete a Contact");
+                                Console.WriteLine("Choose 5: To Search Contact by city or state");
+                                Console.WriteLine("Choose 6: To Get Sorted Contacts by city, state or zip");
+                                Console.WriteLine("Choose 0: To Exit");
+                                try
+                                {
+                                    option = int.Parse(Console.ReadLine());
+                                    switch (option)
+                                    {
+                                        case 1:
+                                            familyContacts.AddContact();
+                                            continue;
+                                        case 2:
+                                            familyContacts.GetContact();
+                                            continue;
+                                        case 3:
+                                            familyContacts.EditContacts();
+                                            break;
+                                        case 4:
+                                            familyContacts.DeleteContacts();
+                                            break;
+                                        case 5:
+                                            familyContacts.SearchContact();
+                                            break;
+                                        case 6:
+                                            familyContacts.SortedContactsByCityStateZip();
+                                            break;
+                                        default:
+                                            Console.WriteLine("Choose valid Option");
+                                            break;
+                                    }
+                                }
+                                catch (Exception)
+                                {
+                                    Console.WriteLine("Please choose an option");
+                                }
+                            } while (option != 0);
+                            break;
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please choose valid Options");
                 }
             } while (input != 0);
         }
